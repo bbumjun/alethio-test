@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: black;
+  margin: 0.5rem;
   &:active {
     color: red;
   }

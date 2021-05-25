@@ -10,7 +10,7 @@ export const Wrapper = styled.nav`
 `;
 
 export const HorizontalNavList = styled(NavList)`
-  width: 15rem;
+  width: 20rem;
   display: flex;
   justify-content: space-between;
 `;
