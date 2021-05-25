@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Button, Image } from 'components/atoms';
 export const Header = styled.header`
-  max-width: 1280px;
+  max-width: ${(props) => props.theme.screen.medium};
+  position: sticky;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
