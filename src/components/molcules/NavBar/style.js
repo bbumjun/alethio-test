@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { NavList } from 'components/molcules';
 import NavList from 'components/molcules/NavList';
 export const Wrapper = styled.nav`
   display: flex;
