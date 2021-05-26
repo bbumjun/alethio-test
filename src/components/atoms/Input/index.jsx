@@ -1,16 +1,27 @@
 import React from 'react';
 import * as S from './style';
-const Input = ({ name, value, handleChange, placeholder, required }) => {
+const Input = ({
+  name,
+  type = 'text',
+  value,
+  placeholder,
+  className,
+  required,
+  validation,
+  validator,
+}) => {
   return (
     <S.Input
-      type="text"
+      type={type}
       name={name}
       value={value}
-      onChange={handleChange}
       placeholder={placeholder}
+      className={className}
       required={required}
+      {...validation}
+      {...validator}
     />
   );
 };
 
-export default Input;
+export default React.memo(Input);
