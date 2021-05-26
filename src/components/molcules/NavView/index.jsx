@@ -7,7 +7,9 @@ const NavView = ({ handleClick }) => {
       <S.CloseButton handleClick={handleClick}>
         <S.CloseIcon src={closeImg} />
       </S.CloseButton>
-      <S.VerticalNavList handleClick={handleClick} />
+      <S.ListWrapper>
+        <S.VerticalNavList handleClick={handleClick} />
+      </S.ListWrapper>
     </S.Wrapper>
   );
 };
