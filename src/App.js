@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'common/theme';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import SignUp from 'components/pages/SignUp';
+import { SignUp, Login } from 'components/pages';
 function App() {
   return (
     <Router>
@@ -13,8 +13,9 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"></Route>
-            <Route path="/login"></Route>
-            <Route path="/logout"></Route>
+            <Route path="/login">
+              <Login />
+            </Route>
             <Route path="/sign-up">
               <SignUp />
             </Route>
