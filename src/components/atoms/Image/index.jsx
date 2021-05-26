@@ -1,7 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const StyledImage = styled.img`
+  width: 100%;
+`;
 const Image = ({ src, alt, className }) => (
-  <img src={src} alt={alt} className={className} />
+  <StyledImage src={src} alt={alt} className={className} />
 );
 
 export default Image;
