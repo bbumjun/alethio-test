@@ -6,6 +6,7 @@ const Input = ({
   value,
   placeholder,
   className,
+  onChange,
   required,
   validation,
   validator,
@@ -16,6 +17,7 @@ const Input = ({
       name={name}
       value={value}
       placeholder={placeholder}
+      onChange={onChange}
       className={className}
       required={required}
       {...validation}

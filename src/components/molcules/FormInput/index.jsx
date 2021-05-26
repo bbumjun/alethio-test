@@ -7,6 +7,7 @@ const FormInput = ({
   type,
   required,
   value,
+  onChange,
   validator,
   placeholder,
   className,
@@ -20,6 +21,7 @@ const FormInput = ({
         type={type}
         value={value}
         required={required}
+        onChange={onChange}
         placeholder={placeholder}
         className={className}
         validation={validation}
