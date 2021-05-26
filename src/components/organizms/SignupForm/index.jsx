@@ -1,18 +1,49 @@
 import React from 'react';
 import useFormInput from 'hooks/useFormInput';
 import * as S from './style';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import auth from 'recoil/auth';
+import { message } from 'common/config';
 const SignUpForm = () => {
   const [email, emailValidator] = useFormInput('이메일 확인');
-  const [pw, pwValidator] = useFormInput('비밀번호 확인');
-  const [pwAgain, pwAgainValidator] = useFormInput('비밀번호 확인');
-  const [phoneNumber, phoneNunmberValidator] = useFormInput('');
-
+  const [password, passwordValidator] = useFormInput('비밀번호 확인');
+  const [passwordAgain, passwordAgainValidator] = useFormInput('비밀번호 확인');
+  const [mobile, mobileValidator] = useFormInput('');
+  const setToken = useSetRecoilState(auth.tokenState);
+  const history = useHistory();
+  const signUp = async () => {
+    try {
+      const res = await axios.post('/sign-up', {
+        email,
+        password,
+        mobile,
+      });
+      if (!res.data?.token) {
+        alert(message.error.ERROR_OCCURED);
+        return;
+      }
+      setToken(res.data.token);
+      alert(message.success.SIGNUP);
+      history.push('/');
+    } catch (error) {
+      if (error.response) {
+        alert(message.error.ERROR_BY_CLIENT);
+      } else if (error.request) {
+        alert(message.error.ERROR_BY_SERVER);
+      } else {
+        alert(message.error.ERROR_OCCURED);
+      }
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (pw !== pwAgain) {
-      alert('비밀번호가 일치하지 않습니다');
+    if (password !== passwordAgain) {
+      alert('비밀번호가 일치하지 않습니다.');
       return;
     }
+    signUp();
   };
 
   return (
@@ -31,8 +62,8 @@ const SignUpForm = () => {
         label="비밀번호"
         name="password"
         type="password"
-        value={pw}
-        validator={pwValidator}
+        value={password}
+        validator={passwordValidator}
         required={true}
         placeholder="비밀번호를 입력하세요."
         validation={{
@@ -44,8 +75,8 @@ const SignUpForm = () => {
         label="비밀번호 확인"
         name="passwordConfirm"
         type="password"
-        value={pwAgain}
-        validator={pwAgainValidator}
+        value={passwordAgain}
+        validator={passwordAgainValidator}
         required={true}
         placeholder="비밀번호를 입력하세요."
         validation={{
@@ -55,10 +86,10 @@ const SignUpForm = () => {
       />
       <S.StyledFormInput
         label="연락처"
-        name="phoneNumber"
+        name="mobile"
         type="text"
-        value={phoneNumber}
-        validator={phoneNunmberValidator}
+        value={mobile}
+        validator={mobileValidator}
         required={true}
         placeholder="연락처를 입력하세요."
         validation={{
