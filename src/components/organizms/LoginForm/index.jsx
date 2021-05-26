@@ -1,11 +1,11 @@
 import React from 'react';
 import { message } from 'common/config';
-import * as S from './style';
 import useInput from 'hooks/useInput';
-import { useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
-import { useHistory } from 'react-router';
 import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import { useHistory } from 'react-router';
+import { Form, FormInput } from 'components/molcules';
 const LoginForm = () => {
   const [email, handleEmailChange] = useInput();
   const [password, handlePaasswordChange] = useInput();
@@ -19,7 +19,6 @@ const LoginForm = () => {
         email,
         password,
       });
-
       setToken(res.data.token);
       redirectToHome();
     } catch (error) {
@@ -35,9 +34,8 @@ const LoginForm = () => {
     login();
   };
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <S.Header>로그인</S.Header>
-      <S.StyledInput
+    <Form title="로그인" submitName="로그인" onSubmit={handleSubmit}>
+      <FormInput
         label="이메일"
         name="email"
         type="email"
@@ -46,7 +44,7 @@ const LoginForm = () => {
         onChange={handleEmailChange}
         placeholder={message.type.EMAIL}
       />
-      <S.StyledInput
+      <FormInput
         label="비밀번호"
         name="password"
         type="password"
@@ -55,8 +53,7 @@ const LoginForm = () => {
         onChange={handlePaasswordChange}
         placeholder={message.type.PASSWORD}
       />
-      <S.SubmitButton type="submit">회원가입</S.SubmitButton>
-    </S.Form>
+    </Form>
   );
 };
 
