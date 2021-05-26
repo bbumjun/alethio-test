@@ -1,17 +1,25 @@
 import React from 'react';
 import * as S from './style';
 import { NavItem } from 'components/molcules';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
+import { message } from 'common/config';
 
 const NavList = ({ className, handleClick }) => {
   const authenticated = useRecoilValue(auth.authenticatedState);
+  const setToken = useSetRecoilState(auth.tokenState);
+  const logout = () => {
+    setToken(null);
+    alert(message.success.LOGOUT);
+  };
   return (
     <S.NavList className={className} onClick={handleClick}>
       {authenticated ? (
         <>
           <NavItem url="/mypage-order">마이페이지</NavItem>
-          <NavItem url="/logout">로그아웃</NavItem>
+          <NavItem url="/" onClick={logout}>
+            로그아웃
+          </NavItem>
         </>
       ) : (
         <>

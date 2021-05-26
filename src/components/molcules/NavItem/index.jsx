@@ -2,13 +2,13 @@ import React from 'react';
 import * as S from './style';
 import { Text } from 'components/atoms';
 
-const NavItem = ({ url, children }) => {
+const NavItem = ({ url, onClick, children }) => {
   const activeStyle = {
-    color: 'red',
+    backgroundColor: 'lightblue',
     fontWeight: 'bold',
   };
   return (
-    <S.StyledLink to={url} activeStyle={activeStyle}>
+    <S.StyledLink to={url} activeStyle={activeStyle} onClick={onClick}>
       <Text>{children}</Text>
     </S.StyledLink>
   );

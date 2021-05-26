@@ -12,6 +12,7 @@ export const message = {
   },
   success: {
     SIGNUP: '회원가입에 성공했습니다.',
+    LOGOUT: '로그아웃 되었습니다.',
   },
   confirm: {
     EMAIL: '이메일을 다시 확인해주세요.',
