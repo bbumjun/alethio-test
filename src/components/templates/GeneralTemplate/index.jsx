@@ -6,7 +6,7 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   max-width: 40rem;
-  margin: 20vh auto;
+  margin: 10vh auto;
   @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
     margin: 10vh 1rem;
   }
