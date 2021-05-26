@@ -1,11 +1,11 @@
 import React from 'react';
-import * as S from './style';
 import { SignupForm } from 'components/organizms/';
+import Template from 'components/templates/GeneralTemplate';
 const SignUp = () => {
   return (
-    <S.Container>
+    <Template>
       <SignupForm />
-    </S.Container>
+    </Template>
   );
 };
 
