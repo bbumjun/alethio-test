@@ -1,7 +1,7 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://106.10.53.116:8099/';
+
+axios.defaults.baseURL = 'http://106.10.53.116:8099';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-export const serverUrl = 'http://106.10.53.116:8099/';
 
 export const message = {
   error: {
@@ -12,5 +12,20 @@ export const message = {
   },
   success: {
     SIGNUP: '회원가입에 성공했습니다.',
+  },
+  confirm: {
+    EMAIL: '이메일을 다시 확인해주세요.',
+    PASSWORD: '비밀번호를 다시 확인해주세요.',
+    MOBILE: '전화번호를 다시 확인해주세요.',
+  },
+  type: {
+    EMAIL: '이메일을 입력해주세요.',
+    PASSWORD: '비밀번호를 입력해주세요.',
+    PASSWORD_AGAIN: '비밀번호 확인',
+    MOBILE: '전화번호를 입력해주세요.',
+  },
+  failure: {
+    LOGIN: '로그인에 실패했습니다.',
+    SIGNUP: '회원가입에 실패헀습니다.',
   },
 };
