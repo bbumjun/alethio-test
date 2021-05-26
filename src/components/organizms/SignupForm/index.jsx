@@ -1,18 +1,23 @@
 import React from 'react';
-import useFormInput from 'hooks/useFormInput';
+import useValidateInput from 'hooks/useValidateInput';
 import * as S from './style';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
 import { message } from 'common/config';
+import axios from 'axios';
 const SignUpForm = () => {
-  const [email, emailValidator] = useFormInput('이메일 확인');
-  const [password, passwordValidator] = useFormInput('비밀번호 확인');
-  const [passwordAgain, passwordAgainValidator] = useFormInput('비밀번호 확인');
-  const [mobile, mobileValidator] = useFormInput('');
+  const [email, emailValidator] = useValidateInput(message.confirm.EMAIL);
+  const [password, passwordValidator] = useValidateInput(
+    message.confirm.PASSWORD,
+  );
+  const [passwordAgain, passwordAgainValidator] = useValidateInput(
+    message.confirm.PASSWORD,
+  );
+  const [mobile, mobileValidator] = useValidateInput(message.confirm.MOBILE);
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
+  const redirectToHome = () => history.push('/');
   const signUp = async () => {
     try {
       const res = await axios.post('/sign-up', {
@@ -20,13 +25,9 @@ const SignUpForm = () => {
         password,
         mobile,
       });
-      if (!res.data?.token) {
-        alert(message.error.ERROR_OCCURED);
-        return;
-      }
       setToken(res.data.token);
       alert(message.success.SIGNUP);
-      history.push('/');
+      redirectToHome();
     } catch (error) {
       if (error.response) {
         alert(message.error.ERROR_BY_CLIENT);
@@ -50,13 +51,13 @@ const SignUpForm = () => {
     <S.Form onSubmit={handleSubmit}>
       <S.Header>회원가입</S.Header>
       <S.StyledFormInput
-        label="E-mail"
+        label="이메일"
         name="email"
         type="email"
         required={true}
         value={email}
         validator={emailValidator}
-        placeholder="이메일을 입력하세요."
+        placeholder={message.type.EMAIL}
       />
       <S.StyledFormInput
         label="비밀번호"
@@ -65,7 +66,7 @@ const SignUpForm = () => {
         value={password}
         validator={passwordValidator}
         required={true}
-        placeholder="비밀번호를 입력하세요."
+        placeholder={message.type.PASSWORD}
         validation={{
           minLength: 8,
           maxLength: 15,
@@ -78,21 +79,23 @@ const SignUpForm = () => {
         value={passwordAgain}
         validator={passwordAgainValidator}
         required={true}
-        placeholder="비밀번호를 입력하세요."
+        placeholder={message.type.PASSWORD_AGAIN}
         validation={{
           minLength: 8,
           maxLength: 15,
         }}
       />
       <S.StyledFormInput
-        label="연락처"
+        label="전화번호"
         name="mobile"
         type="text"
         value={mobile}
         validator={mobileValidator}
         required={true}
-        placeholder="연락처를 입력하세요."
+        placeholder={message.type.MOBILE}
         validation={{
+          minLength: 11,
+          maxLength: 11,
           pattern: '[0-9]+',
         }}
       />
