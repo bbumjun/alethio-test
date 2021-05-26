@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useFormInput = (inValidMesage) => {
+const useValidateInput = (inValidMesage) => {
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
   const onChange = (e) => {
@@ -26,4 +26,4 @@ const useFormInput = (inValidMesage) => {
   return [value, validator];
 };
 
-export default useFormInput;
+export default useValidateInput;
