@@ -6,7 +6,7 @@
 
 ### 회원가입 유효성검사
 
-- useFormInput hook에서 value, valid state 와 onChange, onBlur,onInvalid 핸들러를 반환한다.
+- useValidateInput hook에서 value, valid state 와 onChange, onBlur,onInvalid 핸들러를 반환한다.
 - onChange 핸들러는 값이 바뀔 때 마다 유효성 검사를 실행하고, 값이 유효하지 않을때 invalid 이벤트를 발생시킨다.
 - onBlur 핸들러는 valid state를 업데이트하여 input element의 style을 업데이트한다.
 - onInvalid 핸들러는 constarint validation api 의 커스텀 메시지를 업데이트한다.
