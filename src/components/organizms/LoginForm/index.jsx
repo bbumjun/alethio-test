@@ -21,11 +21,10 @@ const LoginForm = () => {
       });
 
       setToken(res.data.token);
-      alert(message.success.LOGIN);
       redirectToHome();
     } catch (error) {
       if (error.response) {
-        alert(message.confirm.message.PASSWORD);
+        alert(message.confirm.PASSWORD);
       } else {
         alert(message.failure.LOGIN);
       }
@@ -36,7 +35,7 @@ const LoginForm = () => {
     login();
   };
   return (
-    <S.Form>
+    <S.Form onSubmit={handleSubmit}>
       <S.Header>로그인</S.Header>
       <S.StyledInput
         label="이메일"
@@ -56,7 +55,7 @@ const LoginForm = () => {
         onChange={handlePaasswordChange}
         placeholder={message.type.PASSWORD}
       />
-      <S.SubmitButton onSubmit={handleSubmit}>로그인</S.SubmitButton>
+      <S.SubmitButton type="submit">회원가입</S.SubmitButton>
     </S.Form>
   );
 };

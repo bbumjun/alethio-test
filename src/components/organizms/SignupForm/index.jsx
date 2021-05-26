@@ -99,9 +99,7 @@ const SignUpForm = () => {
           pattern: '[0-9]+',
         }}
       />
-      <S.SubmitButton type="submit" onSubmit={handleSubmit}>
-        회원가입
-      </S.SubmitButton>
+      <S.SubmitButton type="submit">회원가입</S.SubmitButton>
     </S.Form>
   );
 };
