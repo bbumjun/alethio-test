@@ -8,6 +8,7 @@ export const message = {
     ERROR_OCCURED: '문제가 발생했습니다.',
     ERROR_BY_CLIENT: '잘못된 요청입니다.',
     ERROR_BY_SERVER: '서버로부터 응답을 받지 못했습니다.',
+    DIFFERENT_PASSWORD: '비밀번호가 일치하지 않습니다.',
   },
   success: {
     SIGNUP: '회원가입에 성공했습니다.',

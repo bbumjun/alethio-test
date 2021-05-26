@@ -40,7 +40,7 @@ const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordAgain) {
-      alert('비밀번호가 일치하지 않습니다.');
+      alert(message.error.DIFFERENT_PASSWORD);
       return;
     }
     signUp();
