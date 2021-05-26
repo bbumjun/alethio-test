@@ -5,8 +5,8 @@ export const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   max-width: 40rem;
-  margin: 15rem auto;
+  margin: 20vh auto;
   @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
-    margin: 10rem 1rem;
+    margin: 10vh 1rem;
   }
 `;
