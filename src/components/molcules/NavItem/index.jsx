@@ -6,6 +6,7 @@ const NavItem = ({ url, onClick, children }) => {
   const activeStyle = {
     backgroundColor: 'lightblue',
     fontWeight: 'bold',
+    color: 'white',
   };
   return (
     <S.StyledLink to={url} activeStyle={activeStyle} onClick={onClick}>
