@@ -29,6 +29,7 @@ export const message = {
   failure: {
     LOGIN: '로그인에 실패했습니다.',
     SIGNUP: '회원가입에 실패헀습니다.',
+    FETCH: '데이터를 불러오는데 실패했습니다.',
   },
   require: {
     LOGIN: '로그인이 필요합니다.',

@@ -4,6 +4,7 @@ import OrderList from 'components/organizms/OrderList';
 import axios from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
+import { message } from 'common/config';
 const MyPage = () => {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(0);
@@ -20,7 +21,7 @@ const MyPage = () => {
         setData(res.data);
         setLoading(false);
       } catch (err) {
-        alert('에러 발생');
+        alert(message.failure.FETCH);
       }
     };
 
