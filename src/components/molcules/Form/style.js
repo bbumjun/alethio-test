@@ -10,6 +10,12 @@ export const Form = styled.form`
   background-color: lightblue;
   padding: 1rem;
   border-radius: 10px;
+  @media screen and (max-width: ${(props) => props.theme.screen.medium}) {
+    min-width: 60vw;
+  }
+  @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
+    min-width: 80vw;
+  }
 `;
 export const Header = styled.h1``;
 

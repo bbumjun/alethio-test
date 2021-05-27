@@ -1,11 +1,11 @@
 import { Input, Label } from 'components/atoms';
 import styled from 'styled-components';
-
-export const StyledLabel = styled(Label)`
-  margin: 0.5rem;
+export const Wrapper = styled.div`
+  padding: 0.5rem 0;
 `;
+export const StyledLabel = styled(Label)``;
 export const StyledInput = styled(Input)`
   font-size: 1.2rem;
   border-radius: 5px;
-  padding: 0.5rem 0.1rem 0 0.1rem;
+  padding: 0.5rem 0.1rem;
 `;
