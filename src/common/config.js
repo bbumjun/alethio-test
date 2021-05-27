@@ -13,6 +13,7 @@ export const message = {
   success: {
     SIGNUP: '회원가입에 성공했습니다.',
     LOGOUT: '로그아웃 되었습니다.',
+    ORDER: '주문이 완료되었습니다.',
   },
   confirm: {
     EMAIL: '이메일을 다시 확인해주세요.',
@@ -28,5 +29,11 @@ export const message = {
   failure: {
     LOGIN: '로그인에 실패했습니다.',
     SIGNUP: '회원가입에 실패헀습니다.',
+  },
+  require: {
+    LOGIN: '로그인이 필요합니다.',
+  },
+  question: {
+    ORDER: '이 제품을 주문하시겠습니까?',
   },
 };
