@@ -6,7 +6,9 @@ export const StyledLink = styled(NavLink)`
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
-  &:active {
-    color: red;
+  transition: all 0.5s ease;
+
+  &:hover {
+    text-decoration: underline;
   }
 `;

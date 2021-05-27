@@ -6,6 +6,8 @@ export const StyledItem = styled(ListItem)`
   margin: 1rem;
   padding: 1rem;
   background-color: white;
+  transition: all 0.5s ease;
+
   &:hover {
     background-color: lightskyblue;
   }
