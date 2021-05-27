@@ -6,12 +6,12 @@
 
 ## 2. 서비스
 
-- Form , FormInput 컴포넌트 재활용
+- Form , FormInput 컴포넌트 재사용
 - recoil authenticated value 통해 로그인 여부 체크
 
 ## 3. 회원가입
 
-- Form ,FormInput 컴포넌트 재활용
+- Form ,FormInput 컴포넌트 재사용
 
   ### 유효성 검사
 
@@ -28,7 +28,10 @@
 
 ## 4.로그인
 
-- Form, FormInput 컴포넌트 재활용
+- Form, FormInput 컴포넌트 재사용
 - 서버로부터 실패응답을 받으면 비밀번호 확인 alert 호출
 
 ## 5. 마이페이지
+
+- 커스텀 로더 컴포넌트를 만들어 요청시간 동안 로딩 표시
+- 로그인 되지 않은 상태에서 뒤로가기로 접근시 홈으로 리다이렉트
