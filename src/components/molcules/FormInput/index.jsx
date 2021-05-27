@@ -14,7 +14,7 @@ const FormInput = ({
   validation,
 }) => {
   return (
-    <S.Label>
+    <S.StyledLabel labelFor={name}>
       <Text>{label}</Text>
       <S.StyledInput
         name={name}
@@ -27,7 +27,7 @@ const FormInput = ({
         validation={validation}
         validator={validator}
       />
-    </S.Label>
+    </S.StyledLabel>
   );
 };
 

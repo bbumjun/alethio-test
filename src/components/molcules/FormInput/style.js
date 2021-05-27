@@ -1,7 +1,7 @@
-import { Input } from 'components/atoms';
+import { Input, Label } from 'components/atoms';
 import styled from 'styled-components';
 
-export const Label = styled.label`
+export const StyledLabel = styled(Label)`
   margin: 0.5rem;
 `;
 export const StyledInput = styled(Input)`
