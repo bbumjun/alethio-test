@@ -9,6 +9,7 @@ export const Form = styled.form`
   align-items: center;
   background-color: lightblue;
   padding: 1rem;
+  border-radius: 10px;
 `;
 export const Header = styled.h1``;
 
