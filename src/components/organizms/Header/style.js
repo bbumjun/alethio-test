@@ -6,7 +6,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
+  @media screen and (max-width: ${(props) => props.theme.screen.medium}) {
     margin: 0 1rem;
   }
 `;

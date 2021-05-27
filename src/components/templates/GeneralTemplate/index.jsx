@@ -5,7 +5,8 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 40rem;
+  align-items: center;
+  max-width: 100%;
   margin: 10vh auto;
   @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
     margin: 10vh 1rem;

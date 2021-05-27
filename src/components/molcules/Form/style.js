@@ -2,11 +2,13 @@ import { Button } from 'components/atoms';
 import styled from 'styled-components';
 
 export const Form = styled.form`
+  min-width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: lightblue;
+  padding: 1rem;
 `;
 export const Header = styled.h1``;
 
