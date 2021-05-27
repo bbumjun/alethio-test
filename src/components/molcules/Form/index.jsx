@@ -5,7 +5,7 @@ const Form = ({ children, title, submitName, onSubmit }) => {
     <S.Form onSubmit={onSubmit}>
       <S.Header>{title}</S.Header>
       {children}
-      <S.SubmitButton>{submitName}</S.SubmitButton>
+      <S.SubmitButton type="submit">{submitName}</S.SubmitButton>
     </S.Form>
   );
 };
