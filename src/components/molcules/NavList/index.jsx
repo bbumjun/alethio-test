@@ -18,7 +18,7 @@ const NavList = ({ className, onClick }) => {
     <S.NavList className={className} onClick={onClick}>
       {authenticated ? (
         <>
-          <NavItem url="/mypage-order">마이페이지</NavItem>
+          <NavItem url="/mypage/order">마이페이지</NavItem>
           <NavItem url="/logout" onClick={logout}>
             로그아웃
           </NavItem>
