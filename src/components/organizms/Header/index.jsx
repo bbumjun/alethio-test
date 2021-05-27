@@ -4,10 +4,10 @@ import * as S from './style';
 import menuImg from 'images/menu_black_24dp.svg';
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const openMenu = () => {
+  const handlerOpenMenuClick = () => {
     setToggleMenu(true);
   };
-  const closeMenu = () => {
+  const handleCloseMenuClick = () => {
     setToggleMenu(false);
   };
   return (
@@ -15,11 +15,11 @@ const Header = () => {
       <Logo />
       <NavBar />
       <S.ButtonWrapper>
-        <S.MenuButton handleClick={openMenu}>
+        <S.MenuButton onClick={handlerOpenMenuClick}>
           <S.MenuImage src={menuImg} alt="menu" />
         </S.MenuButton>
       </S.ButtonWrapper>
-      {toggleMenu && <NavView handleClick={closeMenu} />}
+      {toggleMenu && <NavView onClick={handleCloseMenuClick} />}
     </S.Header>
   );
 };

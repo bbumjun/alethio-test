@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
 import { message } from 'common/config';
 import { useHistory } from 'react-router-dom';
-const NavList = ({ className, handleClick }) => {
+const NavList = ({ className, onClick }) => {
   const authenticated = useRecoilValue(auth.authenticatedState);
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
@@ -15,7 +15,7 @@ const NavList = ({ className, handleClick }) => {
     history.push('/');
   };
   return (
-    <S.NavList className={className} onClick={handleClick}>
+    <S.NavList className={className} onClick={onClick}>
       {authenticated ? (
         <>
           <NavItem url="/mypage-order">마이페이지</NavItem>
