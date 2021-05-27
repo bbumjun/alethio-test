@@ -8,7 +8,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { SignUp, Login, Home, MyPage } from 'components/pages';
+import { SignUp, Login, Home, MyPage, MyOrderDetail } from 'components/pages';
 import { useRecoilValue } from 'recoil';
 import auth from 'recoil/auth';
 function App() {
@@ -24,12 +24,14 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/logout"></Route>
           <Route path="/sign-up">
             <SignUp />
           </Route>
-          <Route path="/mypage/order">
+          <Route exact path="/mypage/order">
             {isAuthenticated ? <MyPage /> : <Redirect to="/" />}
+          </Route>
+          <Route path="/mypage/order/:id">
+            {isAuthenticated ? <MyOrderDetail /> : <Redirect to="/" />}
           </Route>
         </Switch>
       </ThemeProvider>
