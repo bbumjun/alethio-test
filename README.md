@@ -1,4 +1,3 @@
-
 ```
 
  실행방법
@@ -12,7 +11,6 @@
  npm start
 
 ```
-
 
 ## 1. 헤더
 
@@ -53,3 +51,7 @@
 - 커스텀 로더 컴포넌트를 만들어 요청시간 동안 로딩 표시
 - 로그인 되지 않은 상태에서 뒤로가기로 접근시 홈으로 리다이렉트
 
+## 6. 최적화
+
+- component render highlight 를 사용해 의도치 않은 리렌더링이 있는지 확인
+- Profiler 를 사용해 의도치 않은 렌더링의 원인인 props,hook을 찾아 memoization 적용(React.memo, useMemo, useCallback)
