@@ -12,6 +12,7 @@ const Dot = styled.div`
   width: 1rem;
   height: 1rem;
   border-radius: 100%;
+  box-shadow: 5px 5px 5px gray;
   background-color: ${(props) => props.color};
   animation: 0.5s ease-out 0s infinite alternate
     ${(props) => props.animationType};

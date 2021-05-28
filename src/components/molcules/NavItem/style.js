@@ -7,7 +7,6 @@ export const StyledLink = styled(NavLink)`
   padding: 0.5rem;
   border-radius: 5px;
   transition: all 0.5s ease;
-
   &:hover {
     text-decoration: underline;
   }

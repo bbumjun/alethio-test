@@ -8,6 +8,7 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   background-color: lightblue;
+  box-shadow: 5px 5px 5px lightgray;
   padding: 1rem;
   border-radius: 10px;
   @media screen and (max-width: ${(props) => props.theme.screen.medium}) {
