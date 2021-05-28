@@ -25,7 +25,7 @@ const OrderForm = ({ productName, src }) => {
   return (
     <Form title={productName} submitName="주문하기" onSubmit={handleSubmit}>
       <S.ImageWrapper>
-        <S.StyledImage src={src} alt={productName} width={400} height={400} />
+        <S.StyledImage src={src} alt={productName} />
       </S.ImageWrapper>
     </Form>
   );
