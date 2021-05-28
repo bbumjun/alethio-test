@@ -6,4 +6,4 @@ const Text = ({ children, fontSize = 1, fontWeight, className }) => (
   </S.Text>
 );
 
-export default Text;
+export default React.memo(Text);

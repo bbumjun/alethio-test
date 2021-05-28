@@ -9,4 +9,4 @@ const Form = ({ children, title, submitName, onSubmit }) => {
     </S.Form>
   );
 };
-export default Form;
+export default React.memo(Form);
