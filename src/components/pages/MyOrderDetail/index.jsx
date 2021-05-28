@@ -4,11 +4,14 @@ import { OrderItem } from 'components/molcules';
 import * as S from './style';
 import axios from 'axios';
 import Loader from 'components/atoms/Loader';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { Image } from 'components/atoms';
+import backIcon from 'images/back.svg';
 const MyOrderDetail = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const history = useHistory();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,6 +36,9 @@ const MyOrderDetail = () => {
       <h1>주문상세</h1>
       <S.Wrapper>
         <OrderItem item={data} />
+        <S.BackButton onClick={() => history.goBack()}>
+          <Image src={backIcon} />
+        </S.BackButton>
       </S.Wrapper>
     </Template>
   );
