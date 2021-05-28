@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Template from 'components/templates/GeneralTemplate';
-import OrderList from 'components/organizms/OrderList';
+import OrderList from 'components/organisms/OrderList';
 import axios from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
-import { message } from 'common/config';
+import { message } from 'common/constants';
 const MyPage = () => {
   const [data, setData] = useState(null);
   const [page, setPage] = useState(0);

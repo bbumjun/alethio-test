@@ -1,10 +1,9 @@
-import React from 'react';
-import { SignupForm } from 'components/organizms/';
+import { SignUpForm } from 'components/organisms';
 import Template from 'components/templates/GeneralTemplate';
 const SignUp = () => {
   return (
     <Template>
-      <SignupForm />
+      <SignUpForm />
     </Template>
   );
 };

@@ -1,5 +1,4 @@
-import Header from 'components/organizms/Header';
-import React from 'react';
+import Header from 'components/organisms/Header';
 import { ThemeProvider } from 'styled-components';
 import theme from 'common/theme';
 import {

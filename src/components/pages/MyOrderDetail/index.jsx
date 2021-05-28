@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Template from 'components/templates/GeneralTemplate';
-import { OrderItem } from 'components/molcules';
+import { OrderItem } from 'components/molecules';
 import * as S from './style';
 import axios from 'axios';
 import Loader from 'components/atoms/Loader';

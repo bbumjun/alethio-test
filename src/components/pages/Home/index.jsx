@@ -1,6 +1,5 @@
-import React from 'react';
 import Template from 'components/templates/GeneralTemplate';
-import { OrderForm } from 'components/organizms';
+import { OrderForm } from 'components/organisms';
 import productImage from 'images/product.png';
 const Home = () => {
   return (

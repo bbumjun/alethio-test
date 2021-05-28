@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useValidateInput = (invalidMesage) => {
+const useValidateInput = (invalidMessage) => {
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
   const onChange = useCallback((e) => {
@@ -15,10 +15,10 @@ const useValidateInput = (invalidMesage) => {
   const onInvalid = useCallback(
     (e) => {
       if (!e.target.validity.valid) {
-        e.target.setCustomValidity(invalidMesage);
+        e.target.setCustomValidity(invalidMessage);
       }
     },
-    [invalidMesage],
+    [invalidMessage],
   );
   const validator = {
     onBlur,
