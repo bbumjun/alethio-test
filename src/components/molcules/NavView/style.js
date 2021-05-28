@@ -26,7 +26,7 @@ export const VerticalNavList = styled(NavList)`
 export const CloseButton = styled(Button)`
   position: absolute;
   right: 1rem;
-  top: 0;
+  top: 1rem;
 `;
 export const CloseIcon = styled(Image)`
   width: 2rem;
