@@ -16,7 +16,7 @@ const NavList = ({ className, onClick }) => {
       {authenticated ? (
         <>
           <NavItem url="/mypage/order">마이페이지</NavItem>
-          <NavItem url="/" onClick={logout}>
+          <NavItem url="/logout" onClick={logout}>
             로그아웃
           </NavItem>
         </>
