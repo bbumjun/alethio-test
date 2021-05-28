@@ -1,22 +1,25 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-const useValidateInput = (inValidMesage) => {
+const useValidateInput = (invalidMesage) => {
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
-  const onChange = (e) => {
+  const onChange = useCallback((e) => {
     setValue(e.target.value);
     e.target.setCustomValidity('');
     e.target.checkValidity();
-  };
+  }, []);
 
-  const onBlur = (e) => {
+  const onBlur = useCallback((e) => {
     setValid(e.target.validity.valid);
-  };
-  const onInvalid = (e) => {
-    if (!e.target.validity.valid) {
-      e.target.setCustomValidity(inValidMesage);
-    }
-  };
+  }, []);
+  const onInvalid = useCallback(
+    (e) => {
+      if (!e.target.validity.valid) {
+        e.target.setCustomValidity(invalidMesage);
+      }
+    },
+    [invalidMesage],
+  );
   const validator = {
     onBlur,
     onInvalid,
