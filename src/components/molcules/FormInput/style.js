@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
 `;
 export const StyledLabel = styled(Label)``;
 export const StyledInput = styled(Input)`
-  font-size: 1.2rem;
+  width: 20rem;
+  font-size: 1rem;
   border-radius: 5px;
   padding: 0.5rem 0.1rem;
 `;

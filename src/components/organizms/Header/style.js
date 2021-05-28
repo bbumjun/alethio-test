@@ -5,6 +5,7 @@ export const Header = styled.header`
   position: sticky;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   @media screen and (max-width: ${(props) => props.theme.screen.medium}) {
     margin: 0 1rem;
