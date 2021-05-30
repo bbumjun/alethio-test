@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './style';
-import { Text } from 'components/atoms';
 
 const NavItem = ({ url, onClick, children }) => {
   const activeStyle = {
@@ -11,7 +10,7 @@ const NavItem = ({ url, onClick, children }) => {
   };
   return (
     <S.StyledLink to={url} activeStyle={activeStyle} onClick={onClick}>
-      <Text>{children}</Text>
+      {children}
     </S.StyledLink>
   );
 };
