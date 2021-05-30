@@ -3,7 +3,7 @@ import { OrderItem } from 'components/molecules';
 import { useRouteMatch } from 'react-router-dom';
 import { Link } from 'components/atoms';
 const OrderList = ({ items = [] }) => {
-  let { url } = useRouteMatch();
+  const { url } = useRouteMatch();
 
   return (
     <S.StyledList>

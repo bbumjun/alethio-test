@@ -9,4 +9,6 @@ export const StyledInput = styled(Input)`
   font-size: 1rem;
   border-radius: 5px;
   padding: 0.5rem 0.1rem;
+  border-color: ${(props: { isValid: boolean }) =>
+    props.isValid === false ? 'red' : 'inherit'};
 `;
