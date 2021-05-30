@@ -4,8 +4,6 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: ${(props) => props.theme.deviceSizes.mobile}) {
-  }
+  max-width: 30rem;
 `;
 export const StyledImage = styled(Image)``;
