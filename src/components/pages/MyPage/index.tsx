@@ -2,11 +2,11 @@ import React, { useState, useEffect, MouseEvent, ReactElement } from 'react';
 import Template from 'components/templates/GeneralTemplate';
 import OrderList from 'components/organisms/OrderList';
 import { OrderItemType } from 'components/molecules/OrderItem';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
-import { messages } from 'common/constants';
 import { Text } from 'components/atoms';
+import Error from '../Error';
 interface ServerResponse {
   data: ServerData;
 }
@@ -22,6 +22,7 @@ const MyPage = (): ReactElement => {
   const [data, setData] = useState<ServerData | null>(null);
   const [page, setPage] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<AxiosError | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,27 +33,10 @@ const MyPage = (): ReactElement => {
           },
         });
         setData(res.data);
-        setLoading(false);
       } catch (error) {
-        switch (error) {
-          case 400:
-            alert(messages.ERROR.BAD_REQUEST);
-            break;
-          case 401:
-            alert(messages.ERROR.UNAUTHORIZED);
-            break;
-          case 403:
-            alert(messages.ERROR.FORBIDDEN);
-            break;
-          case 404:
-            alert(messages.ERROR.NOT_FOUND);
-            break;
-          case 500:
-            alert(messages.ERROR.INTERNAL_SERVER_ERROR);
-            break;
-          default:
-            alert(messages.ERROR.SOMETHING_WRONG);
-        }
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -65,6 +49,9 @@ const MyPage = (): ReactElement => {
         <Loader />
       </Template>
     );
+  if (error) {
+    return <Error error={error} />;
+  }
   if (!data || data.content.length === 0)
     return (
       <Template>

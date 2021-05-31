@@ -3,12 +3,12 @@ import Template from 'components/templates/GeneralTemplate';
 import { OrderItem } from 'components/molecules';
 import { OrderItemType } from 'components/molecules/OrderItem';
 import * as S from './style';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Loader from 'components/atoms/Loader';
 import { useParams, useHistory } from 'react-router-dom';
 import { Image, Text } from 'components/atoms';
 import backIcon from 'images/back.svg';
-import { messages } from 'common/constants';
+import Error from '../Error';
 interface ParamsType {
   id: string;
 }
@@ -19,6 +19,7 @@ interface serverResponse {
 const MyOrderDetail = (): ReactElement => {
   const [data, setData] = useState<OrderItemType | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<AxiosError | null>(null);
   const { id } = useParams<ParamsType>();
   const history = useHistory();
   useEffect(() => {
@@ -29,27 +30,10 @@ const MyOrderDetail = (): ReactElement => {
           `/order/${id}`,
         );
         setData(res.data);
-        setLoading(false);
       } catch (error) {
-        switch (error) {
-          case 400:
-            alert(messages.ERROR.BAD_REQUEST);
-            break;
-          case 401:
-            alert(messages.ERROR.UNAUTHORIZED);
-            break;
-          case 403:
-            alert(messages.ERROR.FORBIDDEN);
-            break;
-          case 404:
-            alert(messages.ERROR.NOT_FOUND);
-            break;
-          case 500:
-            alert(messages.ERROR.INTERNAL_SERVER_ERROR);
-            break;
-          default:
-            alert(messages.ERROR.SOMETHING_WRONG);
-        }
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -61,6 +45,9 @@ const MyOrderDetail = (): ReactElement => {
         <Loader />
       </Template>
     );
+  }
+  if (error) {
+    return <Error error={error} />;
   }
   if (!data) {
     return (
