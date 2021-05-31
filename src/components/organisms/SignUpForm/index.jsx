@@ -1,25 +1,29 @@
-import useFormInput from 'hooks/useFormInput';
+import useFormInputWithValidation from 'hooks/useFormInputWithValidation';
 import { useHistory } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { message } from 'common/constants';
 import auth from 'recoil/auth';
 import axios from 'axios';
-import { Form, FormInput } from 'components/molecules';
+import { Form, FormInputWithValidation } from 'components/molecules';
 
 const SignUpForm = () => {
-  const emailFormProps = useFormInput(message.confirm.EMAIL);
-  const passwordFormProps = useFormInput(message.confirm.PASSWORD);
-  const passwordConfirmFormProps = useFormInput(message.confirm.PASSWORD);
-  const mobileFormProps = useFormInput(message.confirm.MOBILE);
+  const emailFormProps = useFormInputWithValidation(message.confirm.EMAIL);
+  const passwordFormProps = useFormInputWithValidation(
+    message.confirm.PASSWORD,
+  );
+  const passwordConfirmFormProps = useFormInputWithValidation(
+    message.confirm.PASSWORD,
+  );
+  const mobileFormProps = useFormInputWithValidation(message.confirm.MOBILE);
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
   const redirectToHome = () => history.push('/');
   const signUp = async () => {
     try {
       const res = await axios.post('/sign-up', {
-        email,
-        password,
-        mobile,
+        email: emailFormProps.value,
+        password: passwordFormProps.value,
+        mobile: mobileFormProps.value,
       });
       setToken(res.data.token);
       alert(message.success.SIGNUP);
@@ -30,12 +34,15 @@ const SignUpForm = () => {
       } else if (error.request) {
         alert(message.error.ERROR_BY_SERVER);
       } else {
+        console.log(error);
         alert(message.error.ERROR_OCCURRED);
       }
     }
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { value: password } = passwordFormProps;
+    const { value: passwordAgain } = passwordConfirmFormProps;
     if (password !== passwordAgain) {
       alert(message.error.DIFFERENT_PASSWORD);
       return;
@@ -45,14 +52,14 @@ const SignUpForm = () => {
 
   return (
     <Form title="회원가입" submitName="가입하기" onSubmit={handleSubmit}>
-      <FormInput
+      <FormInputWithValidation
         label="이메일"
         name="email"
         type="email"
         placeholder={message.type.EMAIL}
         {...emailFormProps}
       />
-      <FormInput
+      <FormInputWithValidation
         label="비밀번호"
         name="password"
         type="password"
@@ -63,7 +70,7 @@ const SignUpForm = () => {
         }}
         {...passwordFormProps}
       />
-      <FormInput
+      <FormInputWithValidation
         label="비밀번호 확인"
         name="passwordConfirm"
         type="password"
@@ -74,7 +81,7 @@ const SignUpForm = () => {
         }}
         {...passwordConfirmFormProps}
       />
-      <FormInput
+      <FormInputWithValidation
         label="전화번호"
         name="mobile"
         type="text"

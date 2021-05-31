@@ -2,10 +2,10 @@ import React, { ChangeEventHandler, InputHTMLAttributes } from 'react';
 import * as S from './style';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  className: string;
+  className?: string;
   type: string;
   name: string;
-  onChange: ChangeEventHandler;
+  onChange: ChangeEventHandler<HTMLInputElement>;
   value: string;
 }
 const Input = ({ type, className, ...rest }: InputProps) => {

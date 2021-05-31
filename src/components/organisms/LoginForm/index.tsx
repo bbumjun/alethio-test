@@ -1,13 +1,14 @@
 import { message } from 'common/constants';
-import useInput from 'hooks/useInput';
+import useFormInput from 'hooks/useFormInput';
 import auth from 'recoil/auth';
 import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 import { useHistory } from 'react-router';
 import { Form, FormInput } from 'components/molecules';
+import { FormEvent } from 'react';
 const LoginForm = () => {
-  const [email, handleEmailChange] = useInput();
-  const [password, handlePasswordChange] = useInput();
+  const { value: email, onChange: handleEmailChange } = useFormInput();
+  const { value: password, onChange: handlePasswordChange } = useFormInput();
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
 
@@ -28,7 +29,7 @@ const LoginForm = () => {
       }
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login();
   };
