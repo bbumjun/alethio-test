@@ -1,6 +1,10 @@
 import { Text } from 'components/atoms';
 import * as S from './style';
-const OrderItem = ({ item }) => {
+export interface OrderItemProps {
+  id: number;
+  itemName: string;
+}
+const OrderItem = ({ item }: { item: OrderItemProps }) => {
   return (
     <S.StyledItem>
       <S.ID>

@@ -5,7 +5,7 @@ export interface TextProps {
   fontSize?: number;
   fontWeight?: string;
   className?: string;
-  children: string;
+  children: string | number;
 }
 const Text: React.FC<TextProps> = ({
   children,

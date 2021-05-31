@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import * as S from './style';
 
-const NavItem = ({ url, onClick, children }) => {
+export interface NavItemProps {
+  url: string;
+  onClick?: MouseEventHandler;
+}
+const NavItem: React.FC<NavItemProps> = ({ url, onClick, children }) => {
   const activeStyle = {
     backgroundColor: 'lightblue',
-    fontWeight: 'bold',
     color: 'white',
     boxShadow: '0px 5px 5px lightgray',
   };

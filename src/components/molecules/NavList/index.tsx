@@ -3,7 +3,12 @@ import { NavItem } from 'components/molecules';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
 import { message } from 'common/constants';
-const NavList = ({ className, onClick }) => {
+import { MouseEventHandler } from 'react';
+export interface NavListProps {
+  className?: string;
+  onClick?: MouseEventHandler;
+}
+const NavList = ({ className, onClick }: NavListProps) => {
   const authenticated = useRecoilValue(auth.authenticatedState);
   const setToken = useSetRecoilState(auth.tokenState);
   const logout = () => {

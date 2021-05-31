@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const StyledList = styled.ul`
@@ -5,8 +6,10 @@ const StyledList = styled.ul`
   margin: 0;
   list-style: none;
 `;
-
-const List = ({ children, className }) => {
+export interface ListProps {
+  className?: string;
+}
+const List: React.FC<ListProps> = ({ children, className = '' }) => {
   return <StyledList className={className}>{children}</StyledList>;
 };
 

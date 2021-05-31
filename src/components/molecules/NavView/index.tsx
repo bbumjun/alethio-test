@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import * as S from './style';
 import closeImg from 'images/close_black_24dp.svg';
 import { Portal } from 'components/atoms';
-const NavView = ({ onClick }) => {
+export interface NavViewProps {
+  onClick: MouseEventHandler;
+}
+const NavView = ({ onClick }: NavViewProps) => {
   return (
     <Portal>
       <S.Wrapper>

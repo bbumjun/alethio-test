@@ -17,7 +17,7 @@ const Dot = styled.div`
   box-shadow: 0px 5px 5px gray;
   background-color: ${(props) => props.color};
   animation: 0.5s ease-out 0s infinite alternate
-    ${(props) => props.animationType};
+    ${(props: { animationType: string }) => props.animationType};
 
   @keyframes slideLeft {
     from {
