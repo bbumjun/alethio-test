@@ -1,4 +1,4 @@
-import { Input, Label } from 'components/atoms';
+import { Label } from 'components/atoms';
 import { StyledFormInput } from 'components/molecules/FormInput/style';
 import styled from 'styled-components';
 export const Content = styled.div`

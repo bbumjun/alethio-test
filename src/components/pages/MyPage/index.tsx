@@ -1,7 +1,7 @@
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect, MouseEvent, ReactElement } from 'react';
 import Template from 'components/templates/GeneralTemplate';
 import OrderList from 'components/organisms/OrderList';
-import { OrderItemProps } from 'components/molecules/OrderItem';
+import { OrderItemType } from 'components/molecules/OrderItem';
 import axios from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
@@ -13,12 +13,12 @@ interface ServerResponse {
 interface ServerData {
   totalPages: number;
   currentPage: number;
-  content: OrderItemProps[];
+  content: OrderItemType[];
 }
 interface PageButtonType extends HTMLButtonElement {
   id: string;
 }
-const MyPage = () => {
+const MyPage = (): ReactElement => {
   const [data, setData] = useState<ServerData | null>(null);
   const [page, setPage] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);

@@ -5,9 +5,9 @@ import { message } from 'common/constants';
 import auth from 'recoil/auth';
 import axios from 'axios';
 import { Form, FormInputWithValidation } from 'components/molecules';
-import { FormEvent } from 'react';
+import { FormEvent, ReactElement } from 'react';
 
-const SignUpForm = () => {
+const SignUpForm = (): ReactElement => {
   const emailFormProps = useFormInputWithValidation(message.confirm.EMAIL);
   const passwordFormProps = useFormInputWithValidation(
     message.confirm.PASSWORD,

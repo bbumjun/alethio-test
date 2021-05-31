@@ -9,7 +9,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   id?: string;
   onClick?: MouseEventHandler;
   type?: 'button' | 'submit' | 'reset';
-  children: ReactElement | string;
+  children: ReactElement | string | number;
 }
 const Button = ({
   onClick,
@@ -17,7 +17,7 @@ const Button = ({
   children,
   className,
   ...rest
-}: ButtonProps) => {
+}: ButtonProps): ReactElement => {
   return (
     <S.Button type={type} onClick={onClick} className={className} {...rest}>
       {children}

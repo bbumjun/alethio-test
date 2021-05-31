@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -53,7 +54,7 @@ const Dot = styled.div`
   }
 `;
 
-const Loader = () => (
+const Loader = (): ReactElement => (
   <Wrapper>
     <Dot animationType="slideRight" color="black" />
     <Dot animationType="slideUp" color="red" />

@@ -5,7 +5,7 @@ import * as S from './style';
 
 const Logo = () => (
   <S.StyledLink to="/">
-    <Image src={logo}></Image>
+    <Image src={logo} />
   </S.StyledLink>
 );
 

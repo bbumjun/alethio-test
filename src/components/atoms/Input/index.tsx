@@ -1,4 +1,8 @@
-import React, { ChangeEventHandler, InputHTMLAttributes } from 'react';
+import React, {
+  ChangeEventHandler,
+  InputHTMLAttributes,
+  ReactElement,
+} from 'react';
 import * as S from './style';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -8,7 +12,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   onChange: ChangeEventHandler<HTMLInputElement>;
   value: string;
 }
-const Input = ({ type, className, ...rest }: InputProps) => {
+const Input = ({ type, className, ...rest }: InputProps): ReactElement => {
   return <S.Input type={type} className={className} {...rest} />;
 };
 

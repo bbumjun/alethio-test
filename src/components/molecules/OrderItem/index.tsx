@@ -1,10 +1,14 @@
 import { Text } from 'components/atoms';
+import { ReactElement } from 'react';
 import * as S from './style';
-export interface OrderItemProps {
+export interface OrderItemType {
   id: string;
   itemName: string;
 }
-const OrderItem = ({ item }: { item: OrderItemProps }) => {
+export interface OrderItemProps {
+  item: OrderItemType;
+}
+const OrderItem = ({ item }: OrderItemProps): ReactElement => {
   return (
     <S.StyledItem>
       <S.ID>

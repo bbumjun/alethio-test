@@ -6,7 +6,15 @@ import {
   useState,
 } from 'react';
 
-const useFormInputWithValidation = (invalidMessage: string) => {
+const useFormInputWithValidation = (
+  invalidMessage: string,
+): {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: FocusEvent<HTMLInputElement>) => void;
+  onInvalid: (e: InvalidEvent<HTMLInputElement>) => void;
+  isValid: boolean;
+} => {
   const [value, setValue] = useState<string>('');
   const [isValid, setValid] = useState(true);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {

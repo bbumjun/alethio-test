@@ -15,7 +15,7 @@ const Container = styled.section`
 interface TemplateProps {
   children: ReactElement | ReactElement[];
 }
-const GeneralTemplate = ({ children }: TemplateProps) => {
+const GeneralTemplate = ({ children }: TemplateProps): ReactElement => {
   return <Container>{children}</Container>;
 };
 

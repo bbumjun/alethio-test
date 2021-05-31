@@ -10,7 +10,8 @@ import {
 import { SignUp, Login, Home, MyPage, MyOrderDetail } from 'components/pages';
 import { useRecoilValue } from 'recoil';
 import auth from 'recoil/auth';
-function App() {
+import { ReactElement } from 'react';
+function App(): ReactElement {
   const isAuthenticated = useRecoilValue(auth.authenticatedState);
   return (
     <Router>

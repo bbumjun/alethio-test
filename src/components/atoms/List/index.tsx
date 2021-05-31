@@ -8,9 +8,9 @@ const StyledList = styled.ul`
 `;
 export interface ListProps {
   className?: string;
-  children: ReactElement;
+  children: ReactElement[];
 }
-const List = ({ children, className = '' }: ListProps) => {
+const List = ({ children, className = '' }: ListProps): ReactElement => {
   return <StyledList className={className}>{children}</StyledList>;
 };
 

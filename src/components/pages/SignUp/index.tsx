@@ -1,6 +1,7 @@
 import { SignUpForm } from 'components/organisms';
 import Template from 'components/templates/GeneralTemplate';
-const SignUp = () => {
+import { ReactElement } from 'react';
+const SignUp = (): ReactElement => {
   return (
     <Template>
       <SignUpForm />

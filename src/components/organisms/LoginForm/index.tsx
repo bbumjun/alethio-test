@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 import { useHistory } from 'react-router';
 import { Form, FormInput } from 'components/molecules';
-import { FormEvent } from 'react';
-const LoginForm = () => {
+import { FormEvent, ReactElement } from 'react';
+const LoginForm = (): ReactElement => {
   const { value: email, onChange: handleEmailChange } = useFormInput();
   const { value: password, onChange: handlePasswordChange } = useFormInput();
   const setToken = useSetRecoilState(auth.tokenState);

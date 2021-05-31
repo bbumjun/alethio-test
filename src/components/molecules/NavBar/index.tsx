@@ -1,6 +1,7 @@
+import { ReactElement } from 'react';
 import * as S from './style';
 
-const NavBar = () => {
+const NavBar = (): ReactElement => {
   return (
     <S.Wrapper>
       <S.HorizontalNavList />

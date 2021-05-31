@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { ImgHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
@@ -7,9 +7,9 @@ const StyledImage = styled.img`
 `;
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
-  alt: string;
+  alt?: string;
 }
-const Image = ({ src, alt, ...rest }: ImageProps) => (
+const Image = ({ src, alt = '', ...rest }: ImageProps): ReactElement => (
   <StyledImage src={src} alt={alt} {...rest} />
 );
 
