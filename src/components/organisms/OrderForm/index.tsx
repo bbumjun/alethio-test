@@ -3,7 +3,7 @@ import { Form } from 'components/molecules';
 import * as S from './style';
 import { useRecoilValue } from 'recoil';
 import auth from 'recoil/auth';
-import { message } from 'common/constants';
+import { messages } from 'common/constants';
 import { useHistory } from 'react-router-dom';
 export interface OrderFormProps {
   productName: string;
@@ -13,7 +13,7 @@ const OrderForm = ({ productName, src }: OrderFormProps) => {
   const authenticated = useRecoilValue(auth.authenticatedState);
   const history = useHistory();
   const loginAlert = () => {
-    alert(message.require.LOGIN);
+    alert(messages.LOGIN.REQUIRE);
     history.push('/login');
   };
   const handleSubmit = (e: FormEvent) => {
@@ -22,8 +22,8 @@ const OrderForm = ({ productName, src }: OrderFormProps) => {
       loginAlert();
       return;
     }
-    if (window.confirm(message.question.ORDER)) {
-      alert(message.success.ORDER);
+    if (window.confirm(messages.ORDER.CONFIRM)) {
+      alert(messages.ORDER.SUCCESS);
     }
   };
   return (

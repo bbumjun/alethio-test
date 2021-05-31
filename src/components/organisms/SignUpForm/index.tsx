@@ -1,21 +1,21 @@
 import useFormInputWithValidation from 'hooks/useFormInputWithValidation';
 import { useHistory } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { message } from 'common/constants';
+import { messages } from 'common/constants';
 import auth from 'recoil/auth';
 import axios from 'axios';
 import { Form, FormInputWithValidation } from 'components/molecules';
 import { FormEvent, ReactElement } from 'react';
 
 const SignUpForm = (): ReactElement => {
-  const emailFormProps = useFormInputWithValidation(message.confirm.EMAIL);
+  const emailFormProps = useFormInputWithValidation(messages.EMAIL.CONFIRM);
   const passwordFormProps = useFormInputWithValidation(
-    message.confirm.PASSWORD,
+    messages.PASSWORD.CONFIRM,
   );
   const passwordConfirmFormProps = useFormInputWithValidation(
-    message.confirm.PASSWORD,
+    messages.PASSWORD.CONFIRM,
   );
-  const mobileFormProps = useFormInputWithValidation(message.confirm.MOBILE);
+  const mobileFormProps = useFormInputWithValidation(messages.MOBILE.CONFIRM);
 
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
@@ -28,16 +28,27 @@ const SignUpForm = (): ReactElement => {
         mobile: mobileFormProps.value,
       });
       setToken(res.data.token);
-      alert(message.success.SIGNUP);
+      alert(messages.SIGNUP.SUCCESS);
       redirectToHome();
     } catch (error) {
-      if (error.response) {
-        alert(message.error.ERROR_BY_CLIENT);
-      } else if (error.request) {
-        alert(message.error.ERROR_BY_SERVER);
-      } else {
-        console.log(error);
-        alert(message.error.ERROR_OCCURRED);
+      switch (error) {
+        case 400:
+          alert(messages.ERROR.BAD_REQUEST);
+          break;
+        case 401:
+          alert(messages.ERROR.UNAUTHORIZED);
+          break;
+        case 403:
+          alert(messages.ERROR.FORBIDDEN);
+          break;
+        case 404:
+          alert(messages.ERROR.NOT_FOUND);
+          break;
+        case 500:
+          alert(messages.ERROR.INTERNAL_SERVER_ERROR);
+          break;
+        default:
+          alert(messages.ERROR.SOMETHING_WRONG);
       }
     }
   };
@@ -46,7 +57,7 @@ const SignUpForm = (): ReactElement => {
     const { value: password } = passwordFormProps;
     const { value: passwordAgain } = passwordConfirmFormProps;
     if (password !== passwordAgain) {
-      alert(message.error.DIFFERENT_PASSWORD);
+      alert(messages.PASSWORD.DISCORDANCE);
       return;
     }
     signUp();
@@ -58,7 +69,7 @@ const SignUpForm = (): ReactElement => {
         label="이메일"
         name="email"
         type="email"
-        placeholder={message.type.EMAIL}
+        placeholder={messages.EMAIL.HINT}
         validOptions={{}}
         {...emailFormProps}
       />
@@ -66,7 +77,7 @@ const SignUpForm = (): ReactElement => {
         label="비밀번호"
         name="password"
         type="password"
-        placeholder={message.type.PASSWORD}
+        placeholder={messages.PASSWORD.HINT}
         validOptions={{
           minLength: 8,
           maxLength: 15,
@@ -77,7 +88,7 @@ const SignUpForm = (): ReactElement => {
         label="비밀번호 확인"
         name="passwordConfirm"
         type="password"
-        placeholder={message.type.PASSWORD_AGAIN}
+        placeholder={messages.PASSWORD_AGAIN.HINT}
         validOptions={{
           minLength: 8,
           maxLength: 15,
@@ -88,7 +99,7 @@ const SignUpForm = (): ReactElement => {
         label="전화번호"
         name="mobile"
         type="text"
-        placeholder={message.type.MOBILE}
+        placeholder={messages.MOBILE.HINT}
         validOptions={{
           minLength: 11,
           maxLength: 11,

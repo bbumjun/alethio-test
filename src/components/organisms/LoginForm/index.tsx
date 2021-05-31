@@ -1,4 +1,4 @@
-import { message } from 'common/constants';
+import { messages } from 'common/constants';
 import useFormInput from 'hooks/useFormInput';
 import auth from 'recoil/auth';
 import axios from 'axios';
@@ -22,10 +22,24 @@ const LoginForm = (): ReactElement => {
       setToken(res.data.token);
       redirectToHome();
     } catch (error) {
-      if (error.response) {
-        alert(message.confirm.PASSWORD);
-      } else {
-        alert(message.failure.LOGIN);
+      switch (error) {
+        case 400:
+          alert(messages.ERROR.BAD_REQUEST);
+          break;
+        case 401:
+          alert(messages.ERROR.UNAUTHORIZED);
+          break;
+        case 403:
+          alert(messages.ERROR.FORBIDDEN);
+          break;
+        case 404:
+          alert(messages.ERROR.NOT_FOUND);
+          break;
+        case 500:
+          alert(messages.ERROR.INTERNAL_SERVER_ERROR);
+          break;
+        default:
+          alert(messages.ERROR.SOMETHING_WRONG);
       }
     }
   };
@@ -42,7 +56,7 @@ const LoginForm = (): ReactElement => {
         required
         value={email}
         onChange={handleEmailChange}
-        placeholder={message.type.EMAIL}
+        placeholder={messages.EMAIL.HINT}
       />
       <FormInput
         label="비밀번호"
@@ -51,7 +65,7 @@ const LoginForm = (): ReactElement => {
         required
         value={password}
         onChange={handlePasswordChange}
-        placeholder={message.type.PASSWORD}
+        placeholder={messages.PASSWORD.HINT}
       />
     </Form>
   );

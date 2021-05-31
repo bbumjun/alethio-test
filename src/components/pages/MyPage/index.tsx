@@ -5,7 +5,7 @@ import { OrderItemType } from 'components/molecules/OrderItem';
 import axios from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
-import { message } from 'common/constants';
+import { messages } from 'common/constants';
 import { Text } from 'components/atoms';
 interface ServerResponse {
   data: ServerData;
@@ -33,8 +33,26 @@ const MyPage = (): ReactElement => {
         });
         setData(res.data);
         setLoading(false);
-      } catch (err) {
-        alert(message.failure.FETCH);
+      } catch (error) {
+        switch (error) {
+          case 400:
+            alert(messages.ERROR.BAD_REQUEST);
+            break;
+          case 401:
+            alert(messages.ERROR.UNAUTHORIZED);
+            break;
+          case 403:
+            alert(messages.ERROR.FORBIDDEN);
+            break;
+          case 404:
+            alert(messages.ERROR.NOT_FOUND);
+            break;
+          case 500:
+            alert(messages.ERROR.INTERNAL_SERVER_ERROR);
+            break;
+          default:
+            alert(messages.ERROR.SOMETHING_WRONG);
+        }
       }
     };
 

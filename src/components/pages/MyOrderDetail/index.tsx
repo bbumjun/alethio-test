@@ -44,6 +44,11 @@ const MyOrderDetail = (): ReactElement => {
           case 404:
             alert(messages.ERROR.NOT_FOUND);
             break;
+          case 500:
+            alert(messages.ERROR.INTERNAL_SERVER_ERROR);
+            break;
+          default:
+            alert(messages.ERROR.SOMETHING_WRONG);
         }
       }
     };

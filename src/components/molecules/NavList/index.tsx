@@ -2,7 +2,7 @@ import * as S from './style';
 import { NavItem } from 'components/molecules';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import auth from 'recoil/auth';
-import { message } from 'common/constants';
+import { messages } from 'common/constants';
 import { MouseEventHandler, ReactElement } from 'react';
 export interface NavListProps {
   className?: string;
@@ -13,7 +13,7 @@ const NavList = ({ className, onClick }: NavListProps): ReactElement => {
   const setToken = useSetRecoilState(auth.tokenState);
   const logout = () => {
     setToken(null);
-    alert(message.success.LOGOUT);
+    alert(messages.LOGOUT.SUCCESS);
   };
   return (
     <S.NavList className={className} onClick={onClick}>
