@@ -5,5 +5,6 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 30rem;
+  min-height: 20rem;
 `;
 export const StyledImage = styled(Image)``;
