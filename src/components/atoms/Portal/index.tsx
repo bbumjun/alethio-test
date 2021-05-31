@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Portal: React.FC = ({ children }) => {
+const Portal = ({ children }: ReactElement | ReactElement[]) => {
   const globalPortal = document.getElementById('global-portal');
   if (globalPortal) {
     return ReactDOM.createPortal(children, globalPortal);

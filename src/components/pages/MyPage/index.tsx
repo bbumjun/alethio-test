@@ -1,19 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 import Template from 'components/templates/GeneralTemplate';
 import OrderList from 'components/organisms/OrderList';
+import { OrderItemProps } from 'components/molecules/OrderItem';
 import axios from 'axios';
 import * as S from './style';
 import Loader from 'components/atoms/Loader';
 import { message } from 'common/constants';
+import { Text } from 'components/atoms';
+interface ServerResponse {
+  data: ServerData;
+}
+interface ServerData {
+  totalPages: number;
+  currentPage: number;
+  content: OrderItemProps[];
+}
+interface PageButtonType extends HTMLButtonElement {
+  id: string;
+}
 const MyPage = () => {
-  const [data, setData] = useState(null);
-  const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<ServerData | null>(null);
+  const [page, setPage] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('/order', {
+        const res: ServerResponse = await axios.get<ServerData>('/order', {
           params: {
             page,
           },
@@ -34,6 +47,16 @@ const MyPage = () => {
         <Loader />
       </Template>
     );
+  if (!data || data.content.length === 0)
+    return (
+      <Template>
+        <Text>불러올 데이터가 없습니다.</Text>
+      </Template>
+    );
+
+  const handleClickPageButton = (e: MouseEvent<PageButtonType>) => {
+    setPage(Number(e.currentTarget.id));
+  };
   return (
     <Template>
       <h1>주문 목록</h1>
@@ -42,10 +65,8 @@ const MyPage = () => {
         {[...Array(data.totalPages)].map((item, i) => (
           <S.PageButton
             key={i}
-            id={i}
-            onClick={(e) => {
-              setPage(Number(e.target.id));
-            }}
+            id={String(i)}
+            onClick={handleClickPageButton}
             highlight={page === i}
           >
             {i + 1}

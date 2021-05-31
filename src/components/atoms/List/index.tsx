@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const StyledList = styled.ul`
@@ -8,8 +8,9 @@ const StyledList = styled.ul`
 `;
 export interface ListProps {
   className?: string;
+  children: ReactElement;
 }
-const List: React.FC<ListProps> = ({ children, className = '' }) => {
+const List = ({ children, className = '' }: ListProps) => {
   return <StyledList className={className}>{children}</StyledList>;
 };
 

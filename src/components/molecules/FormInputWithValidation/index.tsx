@@ -11,9 +11,9 @@ export interface ValidOptionTypes {
   pattern: string;
 }
 export interface FormInputWithValidationProps extends FormInputProps {
-  handleBlur: EventHandler<FocusEvent>;
-  handleInvalid: EventHandler<FormEvent>;
-  handleChange: EventHandler<ChangeEvent>;
+  onBlur: EventHandler<FocusEvent>;
+  onInvalid: EventHandler<FormEvent>;
+  onChange: EventHandler<ChangeEvent>;
   isValid: boolean;
   validOptions: Partial<ValidOptionTypes>;
 }
@@ -24,9 +24,9 @@ const FormInputWithValidation = ({
   value,
   placeholder,
   className,
-  handleBlur,
-  handleInvalid,
-  handleChange,
+  onBlur,
+  onInvalid,
+  onChange,
   isValid,
   validOptions,
 }: FormInputWithValidationProps) => {
@@ -39,9 +39,9 @@ const FormInputWithValidation = ({
           type={type}
           value={value}
           placeholder={placeholder}
-          onChange={handleChange}
-          onInvalid={handleInvalid}
-          onBlur={handleBlur}
+          onChange={onChange}
+          onInvalid={onInvalid}
+          onBlur={onBlur}
           required
           isValid={isValid}
           className={className}

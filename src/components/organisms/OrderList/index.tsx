@@ -1,8 +1,9 @@
 import * as S from './style';
 import { OrderItem } from 'components/molecules';
+import { OrderItemProps } from 'components/molecules/OrderItem';
 import { useRouteMatch } from 'react-router-dom';
 import { Link } from 'components/atoms';
-const OrderList = ({ items = [] }) => {
+const OrderList = ({ items }: { items: OrderItemProps[] }) => {
   const { url } = useRouteMatch();
 
   return (

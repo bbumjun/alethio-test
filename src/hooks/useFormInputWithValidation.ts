@@ -28,7 +28,13 @@ const useFormInputWithValidation = (invalidMessage: string) => {
     [invalidMessage],
   );
 
-  return { value, handleChange, handleBlur, handleInvalid, isValid };
+  return {
+    value,
+    onChange: handleChange,
+    onBlur: handleBlur,
+    onInvalid: handleInvalid,
+    isValid,
+  };
 };
 
 export default useFormInputWithValidation;

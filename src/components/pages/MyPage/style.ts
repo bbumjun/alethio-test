@@ -3,7 +3,7 @@ import { Button, List } from 'components/atoms';
 export const PageButton = styled(Button)`
   border-radius: 5px;
   margin: 0.5rem;
-  ${(props) =>
+  ${(props: { highlight: boolean }) =>
     props.highlight &&
     `
       background-color: lightblue;

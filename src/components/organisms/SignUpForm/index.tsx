@@ -5,6 +5,7 @@ import { message } from 'common/constants';
 import auth from 'recoil/auth';
 import axios from 'axios';
 import { Form, FormInputWithValidation } from 'components/molecules';
+import { FormEvent } from 'react';
 
 const SignUpForm = () => {
   const emailFormProps = useFormInputWithValidation(message.confirm.EMAIL);
@@ -15,6 +16,7 @@ const SignUpForm = () => {
     message.confirm.PASSWORD,
   );
   const mobileFormProps = useFormInputWithValidation(message.confirm.MOBILE);
+
   const setToken = useSetRecoilState(auth.tokenState);
   const history = useHistory();
   const redirectToHome = () => history.push('/');
@@ -39,7 +41,7 @@ const SignUpForm = () => {
       }
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const { value: password } = passwordFormProps;
     const { value: passwordAgain } = passwordConfirmFormProps;
@@ -57,6 +59,7 @@ const SignUpForm = () => {
         name="email"
         type="email"
         placeholder={message.type.EMAIL}
+        validOptions={{}}
         {...emailFormProps}
       />
       <FormInputWithValidation

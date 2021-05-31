@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
@@ -11,8 +12,10 @@ const Container = styled.section`
     margin: 10vh 1rem;
   }
 `;
-
-const GeneralTemplate = ({ children }) => {
+interface TemplateProps {
+  children: ReactElement | ReactElement[];
+}
+const GeneralTemplate = ({ children }: TemplateProps) => {
   return <Container>{children}</Container>;
 };
 

@@ -1,22 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Template from 'components/templates/GeneralTemplate';
 import { OrderItem } from 'components/molecules';
+import { OrderItemProps } from 'components/molecules/OrderItem';
 import * as S from './style';
 import axios from 'axios';
 import Loader from 'components/atoms/Loader';
 import { useParams, useHistory } from 'react-router-dom';
-import { Image } from 'components/atoms';
+import { Image, Text } from 'components/atoms';
 import backIcon from 'images/back.svg';
+interface ParamsType {
+  id: string;
+}
+
+interface serverResponse {
+  data: OrderItemProps;
+}
 const MyOrderDetail = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<OrderItemProps | null>(null);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+  const { id } = useParams<ParamsType>();
   const history = useHistory();
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/order/${id}`);
+        const res: serverResponse = await axios.get<OrderItemProps>(
+          `/order/${id}`,
+        );
         setData(res.data);
         setLoading(false);
       } catch (err) {}
@@ -28,6 +38,13 @@ const MyOrderDetail = () => {
     return (
       <Template>
         <Loader />
+      </Template>
+    );
+  }
+  if (!data) {
+    return (
+      <Template>
+        <Text>데이터가 존재하지 않습니다.</Text>
       </Template>
     );
   }

@@ -4,7 +4,7 @@ export interface FormProps {
   title: string;
   submitName: string;
   onSubmit: FormEventHandler;
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }
 const Form = ({ children, title, submitName, onSubmit }: FormProps) => {
   return (

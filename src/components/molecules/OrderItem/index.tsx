@@ -1,7 +1,7 @@
 import { Text } from 'components/atoms';
 import * as S from './style';
 export interface OrderItemProps {
-  id: number;
+  id: string;
   itemName: string;
 }
 const OrderItem = ({ item }: { item: OrderItemProps }) => {

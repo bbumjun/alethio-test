@@ -7,12 +7,12 @@ export interface TextProps {
   className?: string;
   children: string | number;
 }
-const Text: React.FC<TextProps> = ({
+const Text = ({
   children,
   fontSize = 1,
   fontWeight = 'normal',
   className = '',
-}) => (
+}: TextProps) => (
   <S.Text fontSize={fontSize} fontWeight={fontWeight} className={className}>
     {children}
   </S.Text>

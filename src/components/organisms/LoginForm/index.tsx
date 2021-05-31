@@ -35,26 +35,24 @@ const LoginForm = () => {
   };
   return (
     <Form title="로그인" submitName="로그인" onSubmit={handleSubmit}>
-      <>
-        <FormInput
-          label="이메일"
-          name="email"
-          type="email"
-          required
-          value={email}
-          onChange={handleEmailChange}
-          placeholder={message.type.EMAIL}
-        />
-        <FormInput
-          label="비밀번호"
-          name="password"
-          type="password"
-          required
-          value={password}
-          onChange={handlePasswordChange}
-          placeholder={message.type.PASSWORD}
-        />
-      </>
+      <FormInput
+        label="이메일"
+        name="email"
+        type="email"
+        required
+        value={email}
+        onChange={handleEmailChange}
+        placeholder={message.type.EMAIL}
+      />
+      <FormInput
+        label="비밀번호"
+        name="password"
+        type="password"
+        required
+        value={password}
+        onChange={handlePasswordChange}
+        placeholder={message.type.PASSWORD}
+      />
     </Form>
   );
 };

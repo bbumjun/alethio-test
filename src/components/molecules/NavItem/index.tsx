@@ -5,7 +5,7 @@ export interface NavItemProps {
   url: string;
   onClick?: MouseEventHandler;
 }
-const NavItem: React.FC<NavItemProps> = ({ url, onClick, children }) => {
+const NavItem = ({ url, onClick, children }: NavItemProps) => {
   const activeStyle = {
     backgroundColor: 'lightblue',
     color: 'white',

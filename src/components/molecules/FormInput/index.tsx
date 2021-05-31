@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { InputProps } from 'components/atoms/Input';
-import { Label, Text } from 'components/atoms';
+import { Text } from 'components/atoms';
 import * as S from './style';
 export interface FormInputProps extends InputProps {
   label: string;
