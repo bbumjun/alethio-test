@@ -28,10 +28,10 @@ const SignUpForm = (): ReactElement => {
         mobile: mobileFormProps.value,
       });
       setToken(res.data.token);
-      alert(messages.SIGNUP.SUCCESS);
+      alert(messages.SIGN_UP.SUCCESS);
       redirectToHome();
     } catch (error) {
-      alert(messages.SIGNUP.FAILURE);
+      alert(messages.SIGN_UP.FAILURE);
     }
   };
   const handleSubmit = (e: FormEvent) => {

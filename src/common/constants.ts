@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'http://106.10.53.116:8099';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const messages = {
-  SIGNUP: {
+  SIGN_UP: {
     SUCCESS: '회원가입이 완료되었습니다.',
     FAILURE: '회원가입이 실패했습니다.',
   },
