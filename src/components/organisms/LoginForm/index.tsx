@@ -22,24 +22,10 @@ const LoginForm = (): ReactElement => {
       setToken(res.data.token);
       redirectToHome();
     } catch (error) {
-      switch (error) {
-        case 400:
-          alert(messages.ERROR.BAD_REQUEST);
-          break;
-        case 401:
-          alert(messages.ERROR.UNAUTHORIZED);
-          break;
-        case 403:
-          alert(messages.ERROR.FORBIDDEN);
-          break;
-        case 404:
-          alert(messages.ERROR.NOT_FOUND);
-          break;
-        case 500:
-          alert(messages.ERROR.INTERNAL_SERVER_ERROR);
-          break;
-        default:
-          alert(messages.ERROR.SOMETHING_WRONG);
+      if (error.response.status === 401) {
+        alert(messages.PASSWORD.CONFIRM);
+      } else {
+        alert(messages.LOGIN.FAILURE);
       }
     }
   };
