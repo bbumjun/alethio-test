@@ -11,7 +11,7 @@ export interface NavListProps {
 const NavList = ({ className, onClick }: NavListProps): ReactElement => {
   const authenticated = useRecoilValue(auth.authenticatedState);
   const setToken = useSetRecoilState(auth.tokenState);
-  const logout = () => {
+  const handleLogoutClick = () => {
     setToken(null);
     alert(messages.LOGOUT.SUCCESS);
   };
@@ -20,7 +20,7 @@ const NavList = ({ className, onClick }: NavListProps): ReactElement => {
       {authenticated ? (
         <>
           <NavItem url="/mypage/order">마이페이지</NavItem>
-          <NavItem url="/logout" onClick={logout}>
+          <NavItem url="/logout" onClick={handleLogoutClick}>
             로그아웃
           </NavItem>
         </>
